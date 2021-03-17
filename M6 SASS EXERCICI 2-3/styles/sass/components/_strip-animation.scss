@@ -1,0 +1,45 @@
+/* strips 1-5: nth-child 1-5 */
+@for $i from 1 to 6 {
+    .strip:nth-child(#{$i}){
+        .strip_content{
+            animation-timing-function: ease-out;
+            animation-duration: 0.4s + ($i/10);
+            animation-timing-function: ease-out;
+            animation-name: strip--#{$i};
+        }
+    }
+}
+
+@mixin transformar($animacion, $x:0, $y:0) {
+    @keyframes #{$animacion} {
+        from {
+          transform: translate3d($x, $y, 0);
+        }
+    }
+}
+
+.strip:nth-child(1) .strip_content {
+    background-color: #244F75;  
+  }
+  @include transformar("strip--1", -100%);
+  
+  
+  .strip:nth-child(2) .strip_content {
+    background-color: #60BFBF;
+  }
+  @include transformar("strip--2", 100%);
+    
+  .strip:nth-child(3) .strip_content {
+    background-color: #8C4B7E;
+  }
+  @include transformar("strip--3", 0, -100%);
+  
+  .strip:nth-child(4) .strip_content {
+    background-color: #F8BB44;
+  }
+  @include transformar("strip--4", 0, 100%);
+   
+  .strip:nth-child(5) .strip_content {
+    background-color: #F24B4B;
+  }
+  @include transformar("strip--5", 100%);
